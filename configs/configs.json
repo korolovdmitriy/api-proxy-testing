@@ -1,4 +1,5 @@
 {
     "url": "https://opdk.neram.net/edu/v1/my-guard-police/police-stations",
-    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImM3ZmQwY2Y4LTkwMmEtMTFlYy1iOTA5LTAyNDJhYzEyMDc4MiIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNjUzMTQzNTYwLCJleHAiOjE2NTMxNDcxNjB9.9VTE7TUFF0_jJuEdxDY5NqSLeqYXPdUtk0Bhqj5bTPY"
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQyNTU0YjcyLWI1YWMtMTFlYy1iOTA5LTAyNDJhYzEyMDAwNiIsInJvbGUiOiJQT0xJQ0UiLCJpYXQiOjE2NTMxNDU3NzgsImV4cCI6MTY1MzE0OTM3OH0.CaxPwmacDWFI6GbmET5LGNfd-0I5Cq1TyWtRiciRT-s",
+    "policeStationId": "3c203750-b7e9-11ec-af16-5bb5e7ae13b5"
 }

@@ -1,11 +1,11 @@
 const axios = require("axios");
-const configs = require("./configs/configs.json");
+const { url, accessToken, policeStationId } = require("./configs/configs.json");
 
 axios
-  .get(configs.url, {
+  .get(`${url}/${policeStationId}`, {
     headers: {
-      Authorization: `Bearer ${configs.accessToken}`,
+      Authorization: `Bearer ${accessToken}`,
     },
   })
-  .then((res) => console.log(res.data))
+  .then((res) => console.log(res.data[0].location))
   .catch((err) => console.log(err.response.status));
