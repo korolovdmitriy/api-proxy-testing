@@ -1,11 +1,16 @@
 const axios = require("axios");
-const { url, accessToken, policeStationId } = require("./configs/configs.json");
+const {
+  url,
+  accessToken,
+  policeStationId,
+  userAccessToken,
+} = require("./configs/configs.json");
 
 axios
-  .get(`${url}/${policeStationId}`, {
+  .post(url, {
     headers: {
-      Authorization: `Bearer ${accessToken}`,
+      Authorization: `Bearer ${userAccessToken}`,
     },
   })
-  .then((res) => console.log(res.data[0].location))
-  .catch((err) => console.log(err.response.status));
+  .then((res) => console.log(res.response.status))
+  .catch((err) => console.log(err.response.data.message));
