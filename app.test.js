@@ -1,10 +1,7 @@
 const axios = require("axios");
-const {
-  url,
-  accessToken,
-  policeStationId,
-  userAccessToken,
-} = require("./configs/configs.json");
+const { url, accessToken, userAccessToken } = require("./configs/configs.json");
+
+let firstPoliceStation;
 
 test("GET /v1/my-guard-police/police-stations", async () => {
   await axios
@@ -13,10 +10,13 @@ test("GET /v1/my-guard-police/police-stations", async () => {
         Authorization: `Bearer ${accessToken}`,
       },
     })
-    .then((res) => expect(Array.isArray(res.data)).toBeTruthy());
+    .then((res) => {
+      firstPoliceStation = res.data[0];
+      expect(Array.isArray(res.data)).toBeTruthy();
+    });
 });
 
-test("POST /v1/my-guard-police/police-stations/:id", async () => {
+test("POST /v1/my-guard-police/police-stations", async () => {
   await axios
     .post(url, {
       headers: {
@@ -30,7 +30,7 @@ test("POST /v1/my-guard-police/police-stations/:id", async () => {
 
 test("GET /v1/my-guard-police/police-stations/:id", async () => {
   await axios
-    .get(`${url}/${policeStationId}`, {
+    .get(`${url}/${firstPoliceStation.id}`, {
       headers: {
         Authorization: `Bearer ${accessToken}`,
       },
@@ -43,7 +43,7 @@ test("GET /v1/my-guard-police/police-stations/:id", async () => {
 
 test("DELETE /v1/my-guard-police/police-stations/:id", async () => {
   await axios
-    .get(`${url}/${policeStationId}`, {
+    .get(`${url}/${firstPoliceStation.id}`, {
       headers: {
         Authorization: `Bearer ${userAccessToken}`,
       },
@@ -57,7 +57,7 @@ test("DELETE /v1/my-guard-police/police-stations/:id", async () => {
 
 test("GET /v1/my-guard-police/police-stations/:id/crimes", async () => {
   await axios
-    .get(`${url}/${policeStationId}/crimes`, {
+    .get(`${url}/${firstPoliceStation.id}/crimes`, {
       headers: {
         Authorization: `Bearer ${accessToken}`,
       },
@@ -69,7 +69,7 @@ test("GET /v1/my-guard-police/police-stations/:id/crimes", async () => {
 
 test("GET /v1/my-guard-police/police-stations/:id/check-crimes", async () => {
   await axios
-    .get(`${url}/${policeStationId}/check-crimes`, {
+    .get(`${url}/${firstPoliceStation.id}/check-crimes`, {
       headers: {
         Authorization: `Bearer ${accessToken}`,
       },
